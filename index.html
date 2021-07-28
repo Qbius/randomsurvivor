@@ -41,6 +41,7 @@
             .char-row {
                 display: flex;
                 justify-content: center;
+                margin-bottom: 15px;
             }
 
             .skill-row {
@@ -80,7 +81,7 @@
                 </div>
                 <div class="skill-row" v-for="[slot, choices] in Object.entries(chosen_survivor[1].skills)">
                     <div class="slotname">
-                        <span class='risktext'>{{slot}}</span>
+                        <span class='risktext'>{{slot.startsWith('Misc') ? slot.slice(0, 4) : slot}}</span>
                     </div>
                     <img class="skill-img" v-for="(skill, index) in choices" :title="skill.name" :alt="skill.name" :src="skill.img" :style="(index === chosen_skills[slot]) ? 'border: 1px solid rgb(209, 248, 255);' : 'opacity: 0.3;'">
                 </div>
