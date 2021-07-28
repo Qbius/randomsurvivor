@@ -79,7 +79,7 @@
                         <span class='risktext' style="font-size: 36px;">{{chosen_survivor[0]}}</span>
                     </div>
                 </div>
-                <div class="skill-row" v-for="[slot, choices] in Object.entries(chosen_survivor[1].skills)">
+                <div class="skill-row" v-for="[slot, choices] in Object.entries(chosen_survivor[1].skills)" v-if="slot !== 'Passive'">
                     <div class="slotname">
                         <span class='risktext'>{{slot.startsWith('Misc') ? slot.slice(0, 4) : slot}}</span>
                     </div>

@@ -30,7 +30,6 @@ def build_survivor_object(survivor_name):
         if survivor_name == 'MUL-T' and slot_name == 'Primary':
             res[slot_name] = [{'name': name, 'img': build_img_filename(name)} for name, _ in skills]
             res['Misc'] = [{'name': name, 'img': build_img_filename(name)} for name, _ in skills]
-
         elif survivor_name == 'Captain' and slot_name == 'Special':
             res[slot_name] = [{'name': name, 'img': build_img_filename(name)} for name, _ in skills[:1]]
             res['Misc1'] = [{'name': name, 'img': build_img_filename(name)} for name, _ in skills[1:]]
