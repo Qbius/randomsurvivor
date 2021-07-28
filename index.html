@@ -10,18 +10,19 @@
         
         <style type="text/css">
             #app {
-                display: flex;
-                flex-direction: column;
                 align-items: center;
                 background-color: rgb(83, 36, 79);
                 width: 100%;
                 height: 100%;
             }
 
-            #content {
-                margin: auto;
+            .flex-column {
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
+            }
+
+            .content-box {
                 padding: 15px;
                 border: 3px solid black;
                 background-color: rgb(156, 80, 150);
@@ -64,6 +65,12 @@
                 text-shadow: black 0 -2px;
             }
 
+            .artifact-grid {
+                display: grid;
+                grid-template-rows: 64px 64px 64px 64px;
+                grid-template-columns: 64px 64px 64px 64px;
+            }
+
             @font-face {
                 font-family: Bombardier;
                 src: url(Bombardier-Regular.ttf);
@@ -72,8 +79,8 @@
         </style>
     </head>
     <body>
-        <div id="app">
-            <div id="content">
+        <div id="app" class="flex-column">
+            <div class="content-box flex-column">
                 <div class="char-row">
                     <img class="char-img" :title="chosen_survivor[0]" :alt="chosen_survivor[0]" :src="chosen_survivor[1].img">
                     <div class="slotname">
@@ -85,6 +92,11 @@
                         <span class='risktext'>{{slot.startsWith('Misc') ? slot.slice(0, 4) : slot}}</span>
                     </div>
                     <img class="skill-img" v-for="(skill, index) in choices" :title="skill.name" :alt="skill.name" :src="skill.img" :style="(index === chosen_skills[slot]) ? 'border: 1px solid rgb(209, 248, 255);' : 'opacity: 0.3;'">
+                </div>
+            </div>
+            <div class="content-box artifact-grid" style="margin-top: 10px;">
+                <div v-for="(artifact, index) in all_artifacts" :grid-row="Math.floor(index / 4)" :grid-column="index % 4" :style="chosen_artifacts[index] ? '' : 'opacity: 0.1;'">
+                    <img :title="artifact.name" :alt="artifact.name" :src="artifact.img">
                 </div>
             </div>
         </div>

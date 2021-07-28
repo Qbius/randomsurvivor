@@ -41,15 +41,23 @@ def build_survivor_object(survivor_name):
 
     return {'img': build_img_filename(survivor_name), 'skills': res}
 
+def build_all_survivors_object():
+    site = get_site('Survivors')
+    survivors = [name for div in site.find_all('div', class_='gallerytext') if (name := div.find('a').text) != 'Heretic']
+    return {survivor_name: build_survivor_object(survivor_name) for survivor_name in survivors}
 
-site = get_site('Survivors')
-survivors = [name for div in site.find_all('div', class_='gallerytext') if (name := div.find('a').text) != 'Heretic']
-survivors_info = json.dumps({survivor_name: build_survivor_object(survivor_name) for survivor_name in survivors}, indent=4)
+def build_artifacts_object():
+    site = get_site('Artifacts')
+    artifacts = [(tr.find('td').text.strip(), tr.find('img').attrs['data-src']) for tr in site.find('table', class_='article-table floatheader').find('tbody').find_all('tr')[1:]]
+    [urlretrieve(img_url, build_img_filename(name)) for name, img_url in artifacts]
+    return [{'name': name, 'img': build_img_filename(name)} for name, img_url in artifacts]
 
+
+final_object = json.dumps({'survivors': build_all_survivors_object(), 'artifacts': build_artifacts_object()}, indent=4)
 with open('index.js', 'w') as output_file:
-    output_file.write('const survivors = ' + survivors_info + """
+    output_file.write('const gameinfo = ' + final_object + """
 
-const random_survivor = Object.entries(survivors)[Math.floor(Math.random() * Object.entries(survivors).length)];
+const random_survivor = Object.entries(gameinfo.survivors)[Math.floor(Math.random() * Object.entries(gameinfo.survivors).length)];
 
 let app = new Vue({
     el: '#app',
@@ -59,7 +67,9 @@ let app = new Vue({
         skill: '',
 
         chosen_survivor: random_survivor,
-        chosen_skills: Object.fromEntries(Object.entries(random_survivor[1].skills).map(([slot, choices]) => [slot, Math.floor(Math.random() * choices.length)]))
+        chosen_skills: Object.fromEntries(Object.entries(random_survivor[1].skills).map(([slot, choices]) => [slot, Math.floor(Math.random() * choices.length)])),
+        all_artifacts: gameinfo.artifacts,
+        chosen_artifacts: [...Array(gameinfo.artifacts.length).keys()].map(_ => Math.floor(Math.random() * 2) == 1),
     },
 });
 """)
