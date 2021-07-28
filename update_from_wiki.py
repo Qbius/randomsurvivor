@@ -15,7 +15,7 @@ def get_site(endpoint):
     return bs4.BeautifulSoup(requests.get(f'https://riskofrain2.fandom.com/wiki/{endpoint}').text, features='html.parser')
 
 def build_img_filename(basename):
-    return f'''{imgs_dir}/{basename.replace("'", '').replace(' ', '_').lower()}.png'''
+    return f'''{imgs_dir}/{basename.replace("'", '').replace(':', '').replace(' ', '_').lower()}.png'''
 
 def build_survivor_object(survivor_name):
     survivor_site = get_site(survivor_name)

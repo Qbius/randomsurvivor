@@ -180,37 +180,37 @@ const survivors = {
             "Misc1": [
                 {
                     "name": "Beacon: Healing",
-                    "img": "images/beacon:_healing.png"
+                    "img": "images/beacon_healing.png"
                 },
                 {
                     "name": "Beacon: Shocking",
-                    "img": "images/beacon:_shocking.png"
+                    "img": "images/beacon_shocking.png"
                 },
                 {
                     "name": "Beacon: Resupply",
-                    "img": "images/beacon:_resupply.png"
+                    "img": "images/beacon_resupply.png"
                 },
                 {
                     "name": "Beacon: Hacking",
-                    "img": "images/beacon:_hacking.png"
+                    "img": "images/beacon_hacking.png"
                 }
             ],
             "Misc2": [
                 {
                     "name": "Beacon: Healing",
-                    "img": "images/beacon:_healing.png"
+                    "img": "images/beacon_healing.png"
                 },
                 {
                     "name": "Beacon: Shocking",
-                    "img": "images/beacon:_shocking.png"
+                    "img": "images/beacon_shocking.png"
                 },
                 {
                     "name": "Beacon: Resupply",
-                    "img": "images/beacon:_resupply.png"
+                    "img": "images/beacon_resupply.png"
                 },
                 {
                     "name": "Beacon: Hacking",
-                    "img": "images/beacon:_hacking.png"
+                    "img": "images/beacon_hacking.png"
                 }
             ]
         }
@@ -507,13 +507,13 @@ const survivors = {
             "Primary": [
                 {
                     "name": "DIRECTIVE: Inject",
-                    "img": "images/directive:_inject.png"
+                    "img": "images/directive_inject.png"
                 }
             ],
             "Secondary": [
                 {
                     "name": "DIRECTIVE: Drill",
-                    "img": "images/directive:_drill.png"
+                    "img": "images/directive_drill.png"
                 },
                 {
                     "name": "Seed Barrage",
@@ -523,7 +523,7 @@ const survivors = {
             "Utility": [
                 {
                     "name": "DIRECTIVE: Disperse",
-                    "img": "images/directive:_disperse.png"
+                    "img": "images/directive_disperse.png"
                 },
                 {
                     "name": "Bramble Volley",
@@ -533,7 +533,7 @@ const survivors = {
             "Special": [
                 {
                     "name": "DIRECTIVE: Harvest",
-                    "img": "images/directive:_harvest.png"
+                    "img": "images/directive_harvest.png"
                 },
                 {
                     "name": "Tangling Growth",
