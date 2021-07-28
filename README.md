@@ -1,0 +1,1 @@
+https://qbius.github.io/randomsurvivor/
